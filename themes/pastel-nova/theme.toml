@@ -1,0 +1,12 @@
+name = "PastelNova"
+license = "ACCSSL"
+licenselink = "https://github.com/erbridge/supernova.pet/blob/main/themes/pastel-nova/LICENCE"
+description = ""
+homepage = "https://supernova.pet/"
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "erbridge"
+  homepage = "https://erbridge.co.uk/"
