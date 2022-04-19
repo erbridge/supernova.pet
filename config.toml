@@ -2,3 +2,5 @@ baseURL = 'https://supernova.pet/'
 languageCode = 'en-gb'
 title = 'SuperNova Pet Care'
 theme = 'pastel-nova'
+
+disableKinds = ['taxonomy', 'term']
