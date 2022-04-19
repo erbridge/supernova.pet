@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+<div class="main-accordion">
+  <div>
+    <img src="https://placekitten.com/1920/1200" />
+  </div>
+  <div>
+    <img src="https://placekitten.com/1320/1200" />
+  </div>
+  <div>
+    <img src="https://placekitten.com/1220/1200" />
+  </div>
+  <div>
+    <img src="https://placekitten.com/1720/1200" />
+  </div>
+</div>
+
+<style>
+  .main-accordion {
+    margin: 0;
+    max-height: 100%;
+
+    display: flex;
+  }
+
+  .main-accordion > div {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    transition: flex 0.5s;
+  }
+
+  .main-accordion > div:hover,
+  .main-accordion > div:focus,
+  .main-accordion > div:focus-within {
+    flex: 3;
+  }
+
+  .main-accordion img {
+    object-fit: cover;
+  }
+</style>
+
+{{ end }}

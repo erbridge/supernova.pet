@@ -1,0 +1,54 @@
+:root {
+  /* TODO: Replace with custom texture. */
+  background: url(https://i.redd.it/qwd83nc4xxf41.jpg);
+
+  --accent-colour: #c9c3f8;
+  --accent-colour-dark: #8879f6;
+}
+
+::selection {
+  background-color: var(--accent-colour-dark);
+  color: white;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+}
+
+body > header {
+  grid-area: header;
+}
+
+body > main {
+  grid-area: main;
+  overflow-x: hidden;
+}
+
+body > footer {
+  grid-area: footer;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--accent-colour-dark);
+  text-decoration-thickness: 0.2em;
+
+  transition: text-decoration-color 0.2s;
+}
+
+a:hover {
+  text-decoration-color: var(--accent-colour);
+}

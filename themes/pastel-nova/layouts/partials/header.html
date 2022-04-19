@@ -1,0 +1,59 @@
+<header class="page-header">
+  <div class="stripe"></div>
+  <img class="logo" src="/logo.png" />
+  <h1>{{ .Site.Title }}</h1>
+  <nav>
+    <div>About</div>
+    <div>Experience</div>
+    <div>Services</div>
+    <div>Gallery</div>
+  </nav>
+</header>
+
+<style>
+  .page-header {
+    padding: 0.5em;
+    border-bottom: 8px solid var(--accent-colour);
+
+    font-family: "Dancing Script", cursive;
+    font-size: 24pt;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+  }
+
+  .page-header > .stripe {
+    position: absolute;
+    bottom: 2em;
+
+    width: 25em;
+    max-width: 100%;
+    height: 1em;
+
+    opacity: 0.7;
+    background-color: var(--accent-colour);
+  }
+
+  .page-header > * {
+    z-index: 1;
+  }
+
+  .page-header .logo {
+    max-width: 80%;
+    height: 80vh;
+    max-height: 4em;
+  }
+
+  .page-header h1 {
+    margin-top: -0.76em;
+    margin-bottom: 0.2em;
+  }
+
+  .page-header nav {
+    display: flex;
+    column-gap: 4em;
+  }
+</style>
