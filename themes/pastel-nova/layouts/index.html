@@ -1,27 +1,14 @@
 {{ define "main" }}
 
 <div class="main-accordion">
+  {{ range .Site.Data.accordion.images }}
+  {{ $alt := .alt }}
   <div>
-    <img src="/images/dylan_beach.jpg" />
+    {{ with resources.Get .path }}
+    <img src="{{ .RelPermalink }}" {{ if $alt }} alt="{{ $alt }}" {{ end }} />
+    {{ end }}
   </div>
-  <div>
-    <img src="/images/catch.jpg" />
-  </div>
-  <div>
-    <img src="/images/sheba.jpg" />
-  </div>
-  <div>
-    <img src="/images/nova_and_squiggler.jpg" />
-  </div>
-  <div>
-    <img src="/images/dog_2.jpg" />
-  </div>
-  <div>
-    <img src="/images/dottie.jpg" />
-  </div>
-  <div>
-    <img src="/images/dog_1.jpg" />
-  </div>
+  {{ end }}
 </div>
 
 <style>
@@ -46,7 +33,7 @@
   .main-accordion > div:hover,
   .main-accordion > div:focus,
   .main-accordion > div:focus-within {
-    flex: 3;
+    flex: 15em;
   }
 
   .main-accordion img {
