@@ -1,12 +1,19 @@
+{{ $currentPage := . }}
+
 <header class="page-header">
   <div class="stripe"></div>
   <!-- <img class="logo" src="/logo.png" /> -->
-  <h1>{{ .Site.Title }}</h1>
+  <h1><a href="/">{{ .Site.Title }}</a></h1>
   <nav>
-    <div>About</div>
-    <div>Services</div>
-    <div>FAQs</div>
-    <div>Contact</div>
+    {{ range .Site.Menus.nav }}
+    <div>
+      {{ if $currentPage.IsMenuCurrent "nav" . }}<img
+        src="/images/paw_print.svg"
+        alt="current page indicator"
+      />
+      {{ .Name }}{{ else }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+    </div>
+    {{ end }}
   </nav>
 </header>
 
@@ -51,6 +58,16 @@
     margin-top: 0.5em;
     /* margin-top: -0.76em; */
     margin-bottom: 0.2em;
+  }
+
+  .page-header a {
+    text-decoration: none;
+
+    transition: color 0.2s;
+  }
+
+  .page-header a:hover {
+    color: var(--accent-colour-dark);
   }
 
   .page-header nav {
