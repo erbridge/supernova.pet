@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+<div class="default-single">
+  {{ if .Params.left_image }}{{ with resources.Get .Params.left_image }}
+  <img class="default-single__image" src="{{ .RelPermalink }}" />
+  {{ end }}{{ end }}
+
+  <div class="default-single__content">{{ .Content }}</div>
+
+  {{ if .Params.right_image }}{{ with resources.Get .Params.right_image }}
+  <img class="default-single__image" src="{{ .RelPermalink }}" />
+  {{ end }}{{ end }}
+</div>
+
+<style>
+  .default-single {
+    height: 100%;
+    display: flex;
+    justify-content: {{ if and .Params.left_image .Params.right_image }}space-between{{ else if .Params.left_image }}flex-start{{ else if .Params.right_image }}flex-end{{ else }}center{{ end }};
+  }
+
+  .default-single__image {
+    height: 100%;
+  }
+
+  .default-single__content {
+    margin: 2em;
+    max-width: 40em;
+  }
+
+  .default-single__content p:first-child {
+    margin-top: 0;
+  }
+</style>
+
+{{ end }}

@@ -2,6 +2,7 @@
   background: url(/images/background.jpg);
 
   --accent-colour: #c9c3f8;
+  --accent-colour-low-opacity: #c9c3f840;
   --accent-colour-dark: #8879f6;
 }
 
@@ -34,6 +35,8 @@ body > header {
 body > main {
   grid-area: main;
   overflow-x: hidden;
+
+  background-color: var(--accent-colour-low-opacity);
 }
 
 body > footer {
