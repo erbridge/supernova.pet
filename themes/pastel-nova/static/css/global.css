@@ -1,6 +1,5 @@
 :root {
-  /* TODO: Replace with custom texture. */
-  background: url(https://i.redd.it/qwd83nc4xxf41.jpg);
+  background: url(/images/background.jpg);
 
   --accent-colour: #c9c3f8;
   --accent-colour-dark: #8879f6;
