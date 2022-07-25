@@ -5,7 +5,7 @@ menu:
     title: Services
     weight: 2
 left_image:
-  path: images/dottie.jpg
+  path: images/catch.jpg
   alt:
 ---
 

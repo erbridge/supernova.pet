@@ -5,7 +5,7 @@ menu:
     title: FAQs
     weight: 3
 right_image:
-  path: images/tug.jpg
+  path: images/bertie.jpg
   alt:
 ---
 

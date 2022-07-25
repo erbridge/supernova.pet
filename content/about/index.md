@@ -4,9 +4,6 @@ menu:
   nav:
     title: About
     weight: 1
-left_image:
-  path: images/prince.jpg
-  alt:
 right_image:
   path: images/nova_and_muttley.jpg
   alt:

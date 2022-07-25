@@ -1,13 +1,13 @@
 images:
   - path: images/dylan_beach.jpg
     alt:
-  - path: images/catch.jpg
+  - path: images/dog_2.jpg
     alt:
   - path: images/sheba.jpg
     alt:
   - path: images/nova_and_squiggler.jpg
     alt:
-  - path: images/dog_2.jpg
+  - path: images/prince.jpg
     alt:
     optional: true
   - path: images/tabitha.jpg
