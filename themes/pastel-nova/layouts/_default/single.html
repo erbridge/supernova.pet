@@ -17,6 +17,7 @@
     height: 100%;
     display: flex;
     justify-content: {{ if and .Params.left_image .Params.right_image }}space-between{{ else if .Params.left_image }}flex-start{{ else if .Params.right_image }}flex-end{{ else }}center{{ end }};
+    overflow: hidden;
   }
 
   .default-single__image {
@@ -24,12 +25,18 @@
   }
 
   .default-single__content {
-    margin: 2em;
+    flex: 1;
     max-width: 40em;
+    padding: 2em;
+    overflow: auto;
   }
 
-  .default-single__content p:first-child {
+  .default-single__content :first-child {
     margin-top: 0;
+  }
+
+  .default-single__content :last-child {
+    margin-bottom: 0;
   }
 </style>
 

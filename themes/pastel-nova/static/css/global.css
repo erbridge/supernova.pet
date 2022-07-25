@@ -54,3 +54,11 @@ a {
 a:hover {
   text-decoration-color: var(--accent-colour);
 }
+
+strong {
+  font-weight: bold;
+}
+
+table {
+  border-spacing: 3em 0.2em;
+}

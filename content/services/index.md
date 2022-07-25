@@ -7,27 +7,35 @@ menu:
 left_image: images/dottie.jpg
 ---
 
-Sint culpa occaecat sunt elit est qui reprehenderit tempor et occaecat aliquip
-adipisicing. Eu ullamco et quis ad. Tempor voluptate laborum aliqua consequat.
-Eiusmod laboris ea nulla ad officia irure ipsum elit nisi amet minim. Nulla
-adipisicing occaecat commodo ad occaecat voluptate anim consectetur. Consectetur
-occaecat esse sint culpa laboris nulla officia mollit sit ut culpa mollit
-reprehenderit.
+It’s important to me that your pets feel happy and comfortable with me before we
+have any one-on-one time, so my preference is to have a meet and greet with you
+and your pets first, to make sure we’re a good fit and to discuss your and your
+pets’ needs. If there’s anything you’d like to discuss in advance I’m always
+happy to answer any queries you may have.
 
-Amet veniam id sit aliqua enim nulla. Elit ut dolore quis amet deserunt amet
-eiusmod qui pariatur. Commodo commodo duis anim ullamco voluptate ea. Ex et
-incididunt est minim nisi sit sunt ex elit irure dolore officia. Exercitation
-nulla pariatur nisi nisi.
+## Dog walking
 
-Laboris cupidatat in qui culpa ullamco. Consectetur Lorem nostrud culpa duis
-enim reprehenderit aute. Id anim eu minim aliqua duis ea anim culpa irure ipsum.
-Nostrud exercitation non in ullamco sunt est in nostrud eiusmod. Duis qui enim
-aliqua sint. Quis mollit consectetur ex excepteur magna veniam duis id anim
-nulla aute eiusmod deserunt labore. Eiusmod adipisicing id veniam ullamco
-voluptate laboris consequat ullamco quis tempor deserunt aliquip officia
-ullamco.
+| Service        |     Price |
+| :------------- | --------: |
+| 30 minutes     |       £10 |
+| 1 hour         |       £15 |
+| additional dog | +£5 / dog |
 
-Irure sint incididunt exercitation sit sint fugiat enim magna est eu nulla
-ullamco. Qui Lorem Lorem excepteur aliquip enim est pariatur irure commodo
-fugiat nostrud ea. Nulla nisi amet sit non consequat minim consequat commodo. In
-occaecat consectetur enim qui sit laborum labore.
+Please note: I only walk dogs from the same household together.
+
+## Pet sitting
+
+| Service        |       Price |
+| :------------- | ----------: |
+| drop-in / feed | £10 / visit |
+| overnight      | £20 / night |
+| additional pet |  +50% / pet |
+
+For sitting longer than one day, I take a one night deposit on booking.
+
+## Location
+
+I currently operate in **Dewsbury, Wakefield, and the surrounding areas**.
+
+I may be able to offer services outside of these areas, so please get in touch
+to check my availability!
