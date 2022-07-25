@@ -4,7 +4,9 @@ menu:
   nav:
     title: FAQs
     weight: 3
-right_image: images/tug.jpg
+right_image:
+  path: images/tug.jpg
+  alt:
 ---
 
 ## What animals can you look after?

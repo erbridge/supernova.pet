@@ -4,7 +4,9 @@ menu:
   nav:
     title: Services
     weight: 2
-left_image: images/dottie.jpg
+left_image:
+  path: images/dottie.jpg
+  alt:
 ---
 
 It’s important to me that your pets feel happy and comfortable with me before we

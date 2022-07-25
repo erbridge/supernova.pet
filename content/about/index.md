@@ -4,8 +4,12 @@ menu:
   nav:
     title: About
     weight: 1
-left_image: images/prince.jpg
-right_image: images/nova_and_muttley.jpg
+left_image:
+  path: images/prince.jpg
+  alt:
+right_image:
+  path: images/nova_and_muttley.jpg
+  alt:
 ---
 
 ## Hi! I’m Nova

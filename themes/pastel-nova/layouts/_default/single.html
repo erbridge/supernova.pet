@@ -1,15 +1,33 @@
 {{ define "main" }}
 
 <div class="default-single">
-  {{ if .Params.left_image }}{{ with resources.Get .Params.left_image }}
-  <img class="default-single__image" src="{{ .RelPermalink }}" />
-  {{ end }}{{ end }}
+  {{ if .Params.left_image }}
+  {{ $left_alt := .Params.left_image }}
+  {{ with resources.Get .Params.left_image.path }}
+  <img
+    class="default-single__image"
+    src="{{ .RelPermalink }}"
+    {{ if $left_alt }}
+    alt="{{ $left_alt }}"
+    {{ end }}
+  />
+  {{ end }}
+  {{ end }}
 
   <div class="default-single__content"><div>{{ .Content }}</div></div>
 
-  {{ if .Params.right_image }}{{ with resources.Get .Params.right_image }}
-  <img class="default-single__image" src="{{ .RelPermalink }}" />
-  {{ end }}{{ end }}
+  {{ if .Params.right_image }}
+  {{ $right_alt := .Params.right_image }}
+  {{ with resources.Get .Params.right_image.path }}
+  <img
+    class="default-single__image"
+    src="{{ .RelPermalink }}"
+    {{ if $right_alt }}
+    alt="{{ $right_alt }}"
+    {{ end }}
+  />
+  {{ end }}
+  {{ end }}
 </div>
 
 <style>
