@@ -31,8 +31,8 @@ and I can even water your plants for you!
 ## How do drop-ins work?
 
 During a drop-in, I will visit your home during the day. I can feed if
-necessary, check water, give them a toilet break, and spend some quality time
-together. Drop-ins typically last around half an hour.
+necessary, check water, give them a toilet break, clean out litter trays, and
+spend some quality time together. Drop-ins typically last around half an hour.
 
 Please let me know when booking if you need these to be at specific times or for
 longer than 30 minutes.
