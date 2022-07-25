@@ -4,7 +4,8 @@ menu:
   nav:
     title: About
     weight: 1
-left_image: images/nova_and_squiggler.jpg
+left_image: images/prince.jpg
+right_image: images/nova_and_muttley.jpg
 ---
 
 Irure in magna nostrud eiusmod eu veniam. Deserunt id reprehenderit eiusmod
