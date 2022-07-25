@@ -9,6 +9,7 @@ images:
     alt:
   - path: images/dog_2.jpg
     alt:
+    optional: true
   - path: images/tabitha.jpg
     alt:
   - path: images/dog_1.jpg

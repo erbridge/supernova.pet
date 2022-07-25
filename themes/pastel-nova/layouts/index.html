@@ -3,9 +3,15 @@
 <div class="main-accordion">
   {{ range .Site.Data.accordion.images }}
   {{ $alt := .alt }}
-  <div>
+  <div {{ if .optional }} class="main-accordion__image--optional" {{ end }}>
     {{ with resources.Get .path }}
-    <img src="{{ .RelPermalink }}" {{ if $alt }} alt="{{ $alt }}" {{ end }} />
+    <img
+      src="{{ .RelPermalink }}"
+      {{ if $alt }}
+      alt="{{ $alt }}"
+      {{ end }}
+      tabindex="0"
+    />
     {{ end }}
   </div>
   {{ end }}
@@ -17,10 +23,14 @@
     height: 100%;
 
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
   }
 
   .main-accordion > div {
-    flex: 1;
+    border: 1px solid var(--accent-colour);
+    width: calc(50% - 2px);
+    flex: 30%;
 
     display: flex;
     align-items: center;
@@ -30,16 +40,47 @@
     transition: flex 0.5s;
   }
 
-  .main-accordion > div:hover,
-  .main-accordion > div:focus,
-  .main-accordion > div:focus-within {
-    flex: 15em;
+  .main-accordion > div.main-accordion__image--optional {
+    display: none;
   }
 
   .main-accordion img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+  }
+
+  @media (min-width: 600px) {
+    .main-accordion {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .main-accordion > div {
+      border: none;
+      width: auto;
+      flex: 1;
+
+      cursor: pointer;
+    }
+
+    .main-accordion > div.main-accordion__image--optional {
+      display: flex;
+    }
+
+    .main-accordion > div:hover,
+    .main-accordion > div:focus,
+    .main-accordion > div:focus-within {
+      flex: 25em;
+    }
+  }
+
+  @media (min-width: 850px) {
+    .main-accordion > div:hover,
+    .main-accordion > div:focus,
+    .main-accordion > div:focus-within {
+      flex: 15em;
+    }
   }
 </style>
 
