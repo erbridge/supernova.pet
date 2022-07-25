@@ -5,7 +5,7 @@
   <img class="default-single__image" src="{{ .RelPermalink }}" />
   {{ end }}{{ end }}
 
-  <div class="default-single__content">{{ .Content }}</div>
+  <div class="default-single__content"><div>{{ .Content }}</div></div>
 
   {{ if .Params.right_image }}{{ with resources.Get .Params.right_image }}
   <img class="default-single__image" src="{{ .RelPermalink }}" />
@@ -26,16 +26,22 @@
 
   .default-single__content {
     flex: 1;
-    max-width: 40em;
-    padding: 2em;
+    padding: 2em 4em;
     overflow: auto;
   }
 
-  .default-single__content :first-child {
+  .default-single__content > div {
+    {{ if .Params.left_image }}margin-right: auto;{{ end }}
+    {{ if .Params.right_image }}margin-left: auto;{{ end }}
+    max-width: 40em;
+    width: 100%;
+  }
+
+  .default-single__content > div > :first-child {
     margin-top: 0;
   }
 
-  .default-single__content :last-child {
+  .default-single__content > div > :last-child {
     margin-bottom: 0;
   }
 </style>
