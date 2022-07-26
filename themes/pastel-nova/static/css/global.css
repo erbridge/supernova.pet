@@ -6,6 +6,11 @@
   --accent-colour-dark: #8879f6;
 }
 
+::-moz-selection {
+  background-color: var(--accent-colour-dark);
+  color: white;
+}
+
 ::selection {
   background-color: var(--accent-colour-dark);
   color: white;
@@ -45,13 +50,17 @@ body > footer {
 
 a {
   color: inherit;
+  -webkit-text-decoration-color: var(--accent-colour-dark);
   text-decoration-color: var(--accent-colour-dark);
   text-decoration-thickness: 0.2em;
 
+  transition: -webkit-text-decoration-color 0.2s;
   transition: text-decoration-color 0.2s;
+  transition: text-decoration-color 0.2s, -webkit-text-decoration-color 0.2s;
 }
 
 a:hover {
+  -webkit-text-decoration-color: var(--accent-colour);
   text-decoration-color: var(--accent-colour);
 }
 
