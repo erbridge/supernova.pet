@@ -14,7 +14,9 @@
   {{ end }}
   {{ end }}
 
-  <div class="default-single__content"><div>{{ .Content }}</div></div>
+  <div class="default-single__content" tabindex="0">
+    <div>{{ .Content }}</div>
+  </div>
 
   {{ if .Params.right_image }}
   {{ $right_alt := .Params.right_image }}
