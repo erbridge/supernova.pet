@@ -39,12 +39,6 @@ spend some quality time together. Drop-ins typically last around half an hour.
 Please let me know when booking if you need these to be at specific times or for
 longer than 30 minutes.
 
-## Can you look after my pet somewhere other than my home?
-
-I do not currently offer boarding in my own home. If you're interested in this
-service, feel free to get in touch, and I'll let you know if it becomes
-available.
-
 ## How many dogs do you walk at a time?
 
 The number of dogs I can walk at once will depend on their size and temperament.
