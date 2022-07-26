@@ -3,14 +3,19 @@
 <div class="main-accordion">
   {{ range .Site.Data.accordion.images }}
   {{ $alt := .alt }}
-  <div {{ if .optional }} class="main-accordion__image--optional" {{ end }}>
+  <div
+    class="main-accordion__image-container{{ if .optional }} main-accordion__image-container--optional{{ end }}"
+    role="button"
+    tabindex="0"
+    aria-pressed="false"
+    aria-label="expand image"
+  >
     {{ with resources.Get .path }}
     <img
       src="{{ .RelPermalink }}"
       {{ if $alt }}
       alt="{{ $alt }}"
       {{ end }}
-      tabindex="0"
     />
     {{ end }}
   </div>
@@ -27,7 +32,7 @@
     flex-wrap: wrap-reverse;
   }
 
-  .main-accordion > div {
+  .main-accordion__image-container {
     border: 1px solid var(--accent-colour);
     width: calc(50% - 2px);
     flex: 30%;
@@ -40,11 +45,11 @@
     transition: flex 0.5s;
   }
 
-  .main-accordion > div.main-accordion__image--optional {
+  .main-accordion__image-container--optional {
     display: none;
   }
 
-  .main-accordion img {
+  .main-accordion__image-container img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -56,7 +61,7 @@
       flex-wrap: nowrap;
     }
 
-    .main-accordion > div {
+    .main-accordion__image-container {
       border: none;
       width: auto;
       flex: 1;
@@ -64,21 +69,23 @@
       cursor: pointer;
     }
 
-    .main-accordion > div.main-accordion__image--optional {
+    .main-accordion__image-container--optional {
       display: flex;
     }
 
-    .main-accordion > div:hover,
-    .main-accordion > div:focus,
-    .main-accordion > div:focus-within {
+    .main-accordion__image-container:hover,
+    .main-accordion__image-container:focus,
+    .main-accordion__image-container:focus-within,
+    .main-accordion__image-container[aria-pressed="true"] {
       flex: 25em;
     }
   }
 
   @media (min-width: 850px) {
-    .main-accordion > div:hover,
-    .main-accordion > div:focus,
-    .main-accordion > div:focus-within {
+    .main-accordion__image-container:hover,
+    .main-accordion__image-container:focus,
+    .main-accordion__image-container:focus-within,
+    .main-accordion__image-container[aria-pressed="true"] {
       flex: 15em;
     }
   }
