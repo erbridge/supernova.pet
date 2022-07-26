@@ -1,7 +1,7 @@
 {{ $currentPage := . }}
 
 <header class="page-header">
-  <div class="stripe"></div>
+  <div class="page-header__stripe"></div>
   <!-- <img class="logo" src="/logo.png" /> -->
   <h1><a href="/">{{ .Site.Title }}</a></h1>
   <nav>
@@ -31,7 +31,7 @@
     position: relative;
   }
 
-  .page-header > .stripe {
+  .page-header > .page-header__stripe {
     position: absolute;
     bottom: 2em;
 
