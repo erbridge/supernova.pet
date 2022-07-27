@@ -69,6 +69,9 @@ strong {
 }
 
 table {
+  width: 100%;
+  max-width: 30em;
+
   border-spacing: 1em 0.5em;
 }
 
