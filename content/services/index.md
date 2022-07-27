@@ -33,7 +33,7 @@ Please note: I only walk dogs from the same household together.
 | overnight      | £20 / night |
 | additional pet |  +50% / pet |
 
-For sitting longer than one day, I take a one night deposit on booking.
+For sitting longer than one day, I take a deposit on booking.
 
 ## Location
 
