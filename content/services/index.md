@@ -27,11 +27,13 @@ Please note: I only walk dogs from the same household together.
 
 ## Pet sitting
 
-| Service        |       Price |
-| :------------- | ----------: |
-| drop-in / feed | £10 / visit |
-| overnight      | £20 / night |
-| additional pet |  +50% / pet |
+| Service                     |       Price |
+| :-------------------------- | ----------: |
+| drop-in / feed (30 minutes) | £10 / visit |
+| drop-in / feed (1 hour)     | £15 / visit |
+| daytime (2-6 hours)         |  £10 / hour |
+| overnight                   | £20 / night |
+| additional pet              |  +50% / pet |
 
 For sitting longer than one day, I take a deposit on booking.
 
