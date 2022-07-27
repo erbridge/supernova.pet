@@ -4,15 +4,22 @@
   {{ if .Params.left_image }}
   {{ $left_alt := .Params.left_image.alt }}
   {{ with resources.Get .Params.left_image.path }}
-  <img
-    class="default-single__image"
-    src="{{ .RelPermalink }}"
-    {{ if $left_alt }}
-    alt="{{ $left_alt }}"
+  <picture class="default-single__image">
+    {{ with .Resize (printf "%dx%d webp photo" .Width .Height) }}
+    <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
     {{ end }}
-    width="{{ .Width }}"
-    height="{{ .Height }}"
-  />
+    {{ with .Resize (printf "%dx%d jpeg photo" .Width .Height) }}
+    <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
+    <img
+      src="{{ .RelPermalink }}"
+      {{ if $left_alt }}
+      alt="{{ $left_alt }}"
+      {{ end }}
+      width="{{ .Width }}"
+      height="{{ .Height }}"
+    />
+    {{ end }}
+  </picture>
   {{ end }}
   {{ end }}
 
@@ -23,15 +30,22 @@
   {{ if .Params.right_image }}
   {{ $right_alt := .Params.right_image.alt }}
   {{ with resources.Get .Params.right_image.path }}
-  <img
-    class="default-single__image"
-    src="{{ .RelPermalink }}"
-    {{ if $right_alt }}
-    alt="{{ $right_alt }}"
+  <picture class="default-single__image">
+    {{ with .Resize (printf "%dx%d webp photo" .Width .Height) }}
+    <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
     {{ end }}
-    width="{{ .Width }}"
-    height="{{ .Height }}"
-  />
+    {{ with .Resize (printf "%dx%d jpeg photo" .Width .Height) }}
+    <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
+    <img
+      src="{{ .RelPermalink }}"
+      {{ if $right_alt }}
+      alt="{{ $right_alt }}"
+      {{ end }}
+      width="{{ .Width }}"
+      height="{{ .Height }}"
+    />
+    {{ end }}
+  </picture>
   {{ end }}
   {{ end }}
 </div>
@@ -45,6 +59,11 @@
 
   .default-single__image {
     max-height: 65vh;
+    width: 100%;
+  }
+
+  .default-single__image img {
+    height: 100%;
     width: 100%;
     -o-object-fit: cover;
     object-fit: cover;
