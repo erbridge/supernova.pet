@@ -5,10 +5,10 @@
   {{ $left_alt := .Params.left_image.alt }}
   {{ with resources.Get .Params.left_image.path }}
   <picture class="default-single__image">
-    {{ with .Resize (printf "%dx%d webp photo" .Width .Height) }}
+    {{ with .Resize "1280x webp photo" }}
     <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
     {{ end }}
-    {{ with .Resize (printf "%dx%d jpeg photo" .Width .Height) }}
+    {{ with .Resize "1280x jpeg photo" }}
     <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
     <img
       src="{{ .RelPermalink }}"
@@ -31,10 +31,10 @@
   {{ $right_alt := .Params.right_image.alt }}
   {{ with resources.Get .Params.right_image.path }}
   <picture class="default-single__image">
-    {{ with .Resize (printf "%dx%d webp photo" .Width .Height) }}
+    {{ with .Resize "1280x webp photo" }}
     <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
     {{ end }}
-    {{ with .Resize (printf "%dx%d jpeg photo" .Width .Height) }}
+    {{ with .Resize "1280x jpeg photo" }}
     <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}">
     <img
       src="{{ .RelPermalink }}"
