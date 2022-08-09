@@ -12,8 +12,9 @@ left_image:
 It’s important to me that your pets feel happy and comfortable with me before we
 have any one-on-one time, so my preference is to have a meet and greet with you
 and your pets first, to make sure we’re a good fit and to discuss your and your
-pets’ needs. If there’s anything you’d like to discuss in advance I’m always
-happy to answer any queries you may have.
+pets’ needs. If there’s anything you’d like to discuss in advance [I’m always
+happy to answer any queries you may have]({{< relref "/contact" >}}
+"Contact me").
 
 ## Dog walking
 
@@ -23,7 +24,9 @@ happy to answer any queries you may have.
 | 1 hour         |       £15 |
 | additional dog | +£5 / dog |
 
-Please note: I only walk dogs from the same household together.
+Please note: [I only walk dogs from the same household
+together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
+"How many dogs do you walk at a time?")
 
 ## Pet sitting
 
@@ -41,5 +44,5 @@ For sitting longer than one day, I take a deposit on booking.
 
 I currently operate in **Dewsbury, Wakefield, and the surrounding areas**.
 
-I may be able to offer services outside of these areas, so please get in touch
-to check my availability!
+I may be able to offer services outside of these areas, so [please get in
+touch]({{< relref "/contact" >}} "Contact me") to check my availability!

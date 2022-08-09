@@ -12,7 +12,7 @@ right_image:
 ## What animals can you look after?
 
 I can look after dogs, cats, and other small mammals. If you're not sure if that
-covers your pet, please get in touch.
+covers your pet, [please get in touch]({{< relref "/contact" >}} "Contact me").
 
 ## What's included in an overnight stay?
 
@@ -54,4 +54,5 @@ touch to discuss further details.
 
 ## I have another question
 
-I'm always happy to answer any questions you might have. Please get in touch.
+I'm always happy to answer any questions you might have. [Please get in
+touch.]({{< relref "/contact" >}} "Contact me")

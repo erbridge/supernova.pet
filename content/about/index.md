@@ -50,4 +50,5 @@ knowledge of:
 - Puppy socialisation
 
 Making new fur friends is always the highlight of my day, so if I sound like a
-good match, please do get in touch!
+good match, please take a look at [my services]({{< relref "/services" >}}
+"My services") and [get in touch]({{< relref "/contact" >}} "Contact me")!
