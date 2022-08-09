@@ -25,4 +25,33 @@
   {{ $title := print .Site.Title " | " .Title }}
   {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
   <title>{{ $title }}</title>
+  <meta name="title" content="{{ .Site.Title }}" />
+  <meta
+    name="description"
+    content="{{ .Site.Data.pastel_nova.meta.description }}"
+  />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ .Site.BaseURL }}" />
+  <meta property="og:title" content="{{ .Site.Title }}" />
+  <meta
+  property="og:description"
+  content="{{ .Site.Data.pastel_nova.meta.description }}"
+  />
+  {{ with resources.Get .Site.Data.pastel_nova.meta.image }}
+  <meta property="og:image" content="{{ .Permalink }}" />
+  {{ end }}
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="{{ .Site.BaseURL }}" />
+  <meta property="twitter:title" content="{{ .Site.Title }}" />
+  <meta
+    property="twitter:description"
+    content="{{ .Site.Data.pastel_nova.meta.description }}"
+  />
+  {{ with resources.Get .Site.Data.pastel_nova.meta.image }}
+  <meta property="twitter:image" content="{{ .Permalink }}" />
+  {{ end }}
 </head>

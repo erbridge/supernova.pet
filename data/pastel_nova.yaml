@@ -1,3 +1,8 @@
+meta:
+  image: images/meta.jpg
+  description:
+    Patient and compassionate pet care with over 15 years of experience. Fully
+    insured and DBS checked.
 accordion:
   images:
     - path: images/dylan_beach.jpg
