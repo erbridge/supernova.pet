@@ -38,6 +38,7 @@ body > header {
 }
 
 body > main {
+  position: relative;
   grid-area: main;
   overflow-x: hidden;
 

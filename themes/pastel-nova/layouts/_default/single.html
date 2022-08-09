@@ -50,11 +50,16 @@
   {{ end }}
 </div>
 
+<div class="default-single__floating-content">
+  <strong>{{ .Site.Data.common.sticky_content }}</strong>
+</div>
+
 <style>
   .default-single {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: auto;
   }
 
   .default-single__image {
@@ -73,6 +78,7 @@
   .default-single__content {
     flex: 1;
     padding: 2em;
+    padding-bottom: 5em;
   }
 
   .default-single__content > div {
@@ -88,6 +94,15 @@
 
   .default-single__content > div > :last-child {
     margin-bottom: 0;
+  }
+
+  .default-single__floating-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1em 2em;
+    background-color: var(--accent-colour);
+    text-align: center;
   }
 
   @media (min-width: 450px) {
@@ -111,7 +126,7 @@
 
   @media (min-width: 850px) {
     .default-single__content {
-      padding: 2em 4em;
+      padding: 2em 4em 5em;
     }
   }
 </style>
