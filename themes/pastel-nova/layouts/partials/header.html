@@ -4,10 +4,10 @@
   <a class="page-header__title" href="/">
     {{ with resources.Get "images/logo.png" }}
     <picture class="page-header__logo">
-      {{ with .Resize "320x webp graphic" }}
+      {{ with .Resize "320x webp icon" }}
       <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}" />
       {{ end }}
-      {{ with .Resize "320x png graphic" }}
+      {{ with .Resize "320x png icon" }}
       <source srcset="{{ .RelPermalink }}" type="{{ .MediaType }}" />
       <img
         src="{{ .RelPermalink }}"
