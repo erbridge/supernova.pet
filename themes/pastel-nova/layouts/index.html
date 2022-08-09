@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <div class="main-accordion">
-  {{ range .Site.Data.accordion.images }}
+  {{ range .Site.Data.pastel_nova.accordion.images }}
   {{ $alt := .alt }}
   <div
     class="main-accordion__image-container{{ if .optional }} main-accordion__image-container--optional{{ end }}"
