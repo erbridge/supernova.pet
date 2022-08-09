@@ -38,7 +38,7 @@ together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
 | overnight                   | £20 / night |
 | additional pet              |  +50% / pet |
 
-For sitting longer than one day, I take a deposit on booking.
+For longer bookings, a deposit might be required.
 
 ## Location
 
