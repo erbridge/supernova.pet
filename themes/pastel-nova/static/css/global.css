@@ -52,7 +52,7 @@ a {
   color: inherit;
   -webkit-text-decoration-color: var(--accent-colour-dark);
   text-decoration-color: var(--accent-colour-dark);
-  text-decoration-thickness: 0.2em;
+  text-decoration-thickness: 0.12em;
 
   transition: -webkit-text-decoration-color 0.2s;
   transition: text-decoration-color 0.2s;
