@@ -53,13 +53,15 @@
   }
 
   .page-header__title h1 {
-    text-decoration-line: underline;
-    text-decoration-color: var(--accent-colour);
-    text-decoration-thickness: 0.1em;
-    text-decoration-skip-ink: none;
+    margin-left: -0.52em;
+    margin-right: -0.2em;
+    border-bottom: var(--accent-colour) 0.1em solid;
+    padding-left: 0.52em;
+    padding-right: 0.2em;
+    padding-bottom: 0.05em;
     white-space: nowrap;
 
-    transition: text-decoration-color 0.2s;
+    transition: border-bottom-color 0.2s;
   }
 
   .page-header__title:hover {
@@ -67,12 +69,13 @@
   }
 
   .page-header__title:hover h1 {
-    text-decoration-color: var(--accent-colour-dark);
+    border-bottom-color: var(--accent-colour-dark);
   }
 
   .page-header__logo {
     margin-right: 0.5em;
     width: 6em;
+    z-index: 1;
   }
 
   .page-header nav a {

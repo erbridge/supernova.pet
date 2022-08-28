@@ -55,6 +55,7 @@ a {
   -webkit-text-decoration-color: var(--accent-colour-dark);
   text-decoration-color: var(--accent-colour-dark);
   text-decoration-thickness: 0.15em;
+  text-underline-position: from-font;
 
   transition: color 0.2s;
 }
