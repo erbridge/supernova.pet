@@ -1,9 +1,10 @@
 :root {
   background: url(/images/background.jpg);
 
-  --accent-colour: #c9c3f8;
-  --accent-colour-low-opacity: #c9c3f840;
-  --accent-colour-dark: #8879f6;
+  --accent-colour: #9fe8f2;
+  --accent-colour-dark: #48b3c9;
+
+  --secondary-accent-colour-low-opacity: #c9c3f840;
 }
 
 ::-moz-selection {
@@ -42,7 +43,7 @@ body > main {
   grid-area: main;
   overflow-x: hidden;
 
-  background-color: var(--accent-colour-low-opacity);
+  background-color: var(--secondary-accent-colour-low-opacity);
 }
 
 body > footer {
@@ -53,16 +54,13 @@ a {
   color: inherit;
   -webkit-text-decoration-color: var(--accent-colour-dark);
   text-decoration-color: var(--accent-colour-dark);
-  text-decoration-thickness: 0.12em;
+  text-decoration-thickness: 0.15em;
 
-  transition: -webkit-text-decoration-color 0.2s;
-  transition: text-decoration-color 0.2s;
-  transition: text-decoration-color 0.2s, -webkit-text-decoration-color 0.2s;
+  transition: color 0.2s;
 }
 
 a:hover {
-  -webkit-text-decoration-color: var(--accent-colour);
-  text-decoration-color: var(--accent-colour);
+  color: var(--accent-colour-dark);
 }
 
 strong {
