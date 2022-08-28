@@ -2,7 +2,7 @@ meta:
   image: images/meta.jpg
   description:
     Patient and compassionate pet care with over 15 years of experience. Fully
-    insured and DBS checked.
+    insured, DBS checked and first aid & CPR certified.
 accordion:
   images:
     - path: images/dylan_beach.jpg
@@ -20,4 +20,4 @@ accordion:
       alt:
     - path: images/dog_1.jpg
       alt:
-sticky_content: Fully insured and DBS checked
+sticky_content: Fully insured, DBS checked, first aid & CPR certified

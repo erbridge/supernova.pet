@@ -100,7 +100,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 1em 2em;
+    padding: 1em 2em calc(1em - 8px);
+    font-size: 0.85em;
     background-color: var(--accent-colour);
     text-align: center;
   }
@@ -121,6 +122,10 @@
 
     .default-single__content {
       overflow: auto;
+    }
+
+    .default-single__floating-content {
+      font-size: 1em;
     }
   }
 
