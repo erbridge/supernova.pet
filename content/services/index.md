@@ -46,3 +46,8 @@ I currently operate in **Dewsbury, Wakefield, and the surrounding areas**.
 
 I may be able to offer services outside of these areas, so [please get in
 touch]({{< relref "/contact" >}} "Contact me") to check my availability!
+
+## Terms of service
+
+For my full terms, please see the [terms of service
+page]({{< relref "/terms" >}} "Terms of service").
