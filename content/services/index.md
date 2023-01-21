@@ -30,13 +30,25 @@ together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
 
 ## Pet sitting
 
+### Daytime services
+
 | Service                     |       Price |
 | :-------------------------- | ----------: |
 | drop-in / feed (30 minutes) | £10 / visit |
 | drop-in / feed (1 hour)     | £15 / visit |
-| daytime (2-6 hours)         |  £10 / hour |
-| overnight                   | £20 / night |
+| sitting (2-6 hours)         |  £10 / hour |
 | additional pet              |  +50% / pet |
+
+### Overnight services
+
+| Service                         |       Price |
+| :------------------------------ | ----------: |
+| dog sitting (incl. 1 hour walk) | £30 / night |
+| cat sitting                     | £20 / night |
+| additional pet                  |  +£10 / pet |
+
+[Please get in touch]({{< relref "/contact" >}} "Contact me") about other kinds
+of pets.
 
 For longer bookings, a deposit might be required.
 
