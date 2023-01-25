@@ -41,14 +41,20 @@ together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
 
 ### Overnight services
 
-| Service                         |       Price |
-| :------------------------------ | ----------: |
-| dog sitting (incl. 1 hour walk) | £30 / night |
-| cat sitting                     | £20 / night |
-| additional pet                  |  +£10 / pet |
+#### With dog
 
-[Please get in touch]({{< relref "/contact" >}} "Contact me") about other kinds
-of pets.
+| Service                     |       Price |
+| :-------------------------- | ----------: |
+| sitting (incl. 1 hour walk) | £30 / night |
+| additional dog              |  +£15 / dog |
+| additional other pet        |  +£10 / pet |
+
+#### Without dog
+
+| Service        |       Price |
+| :------------- | ----------: |
+| sitting        | £20 / night |
+| additional pet |  +£10 / pet |
 
 For longer bookings, a deposit might be required.
 
