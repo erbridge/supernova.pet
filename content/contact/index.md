@@ -3,7 +3,7 @@ title: Contact
 menu:
   nav:
     title: Contact
-    weight: 4
+    weight: 5
 left_image:
   path: images/smile.jpg
   alt:

@@ -20,4 +20,9 @@ accordion:
       alt:
     - path: images/dog_1.jpg
       alt:
-sticky_content: Fully insured, DBS checked, first aid & CPR certified
+sticky_content:
+  top:
+    content: ★★★★★ on Pawshake and Rover
+    relref: /reviews
+  bottom:
+    content: 15 years experience, fully insured, DBS checked, first aid & CPR certified

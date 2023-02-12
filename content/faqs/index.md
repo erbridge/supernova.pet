@@ -3,7 +3,7 @@ title: FAQs
 menu:
   nav:
     title: FAQs
-    weight: 3
+    weight: 4
 right_image:
   path: images/bertie.jpg
   alt:

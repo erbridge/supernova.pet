@@ -1,0 +1,114 @@
+---
+title: Reviews
+menu:
+  nav:
+    title: Reviews
+    weight: 3
+left_image:
+  path: images/dottie.jpg
+  alt:
+---
+
+<div class="review">
+  <p class="review__rating">★★★★★</p>
+  <p>
+    We had regular updates and pictures of Murphy from Nova... I would
+    definitely recommend Nova to anyone who wants their dog well looked after
+    whilst you're away on holiday.
+  </p>
+</div>
+
+<div class="review">
+  <p class="review__rating">★★★★★</p>
+  <p>
+    Nova has been absolutely Fantastic with our dog while we went away. I felt
+    apprehensive leaving him with a sitter but Nova made me feel totally at ease
+    and I knew he was in safe hands.
+  </p>
+</div>
+
+<div class="review">
+  <p class="review__rating">★★★★★</p>
+  <p>
+    Fantastic sitter, taking our Bella for regular walks, advising and providing
+    with useful professional information... If you're looking for someone to
+    look after your beloved pets, Nova is the best choice!!
+  </p>
+</div>
+
+<div class="review">
+  <p class="review__rating">★★★★★</p>
+  <p>
+    Overall communication & attention to detail when it came to Max's needs was
+    perfect. Would recommend!
+  </p>
+</div>
+
+<div class="review">
+  <p class="review__rating">★★★★★</p>
+  <p>
+    I returned from my holidays to a tidy home and with my babies all in good
+    condition. Nova went above & beyond as my pups are attention seekers and
+    they managed them so well. I would have Nova to look after them again.
+  </p>
+</div>
+
+<div class="review">
+  <p class="review__rating">★★★★★</p>
+  <p>
+    When I arrived home the house has been left clean and tidy. I would
+    recommend Nova to anyone who is looking for someone to take care of your
+    pet.
+  </p>
+</div>
+
+<style>
+  .review {
+    margin: 2em 0;
+    text-indent: -0.7em;
+  }
+
+  .review__rating {
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--accent-colour-dark);
+  }
+
+  .review > :first-child {
+    margin-bottom: 0.5em;
+  }
+
+  .review > :nth-child(2) {
+    margin-top: 0.5em;
+  }
+
+  .review > :nth-child(2)::before {
+    content: "“ ";
+  }
+
+  .review > :nth-child(2)::after {
+    content: " ”";
+  }
+
+  .review > :nth-child(2)::before,
+  .review > :nth-child(2)::after {
+    font-weight: bold;
+    color: var(--accent-colour-dark);
+  }
+
+  .review:first-child {
+    margin-top: 0;
+  }
+
+  .review:first-child > :first-child {
+    margin-top: 0;
+  }
+
+  .review:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .review:last-of-type > :last-child {
+    margin-bottom: 0;
+  }
+</style>
