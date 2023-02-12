@@ -60,7 +60,8 @@ For longer bookings, a deposit might be required.
 
 ## Location
 
-I currently operate in **Dewsbury, Wakefield, and the surrounding areas**.
+I currently operate in **Dewsbury, Wakefield, Barnsley, and the surrounding
+areas**.
 
 I may be able to offer services outside of these areas, so [please get in
 touch]({{< relref "/contact" >}} "Contact me") to check my availability!
