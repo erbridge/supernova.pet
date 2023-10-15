@@ -20,7 +20,7 @@ happy to answer any queries you may have]({{< relref "/contact" >}}
 
 | Service        |     Price |
 | :------------- | --------: |
-| 30 minutes     |       £10 |
+| 30 mins        |       £10 |
 | 1 hour         |       £15 |
 | additional dog | +£5 / dog |
 
@@ -32,29 +32,25 @@ together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
 
 ### Daytime services
 
-| Service                     |       Price |
-| :-------------------------- | ----------: |
-| drop-in / feed (30 minutes) | £10 / visit |
-| drop-in / feed (1 hour)     | £15 / visit |
-| sitting (2-6 hours)         |  £10 / hour |
-| additional pet              |  +50% / pet |
+| Service                  |         Price |
+| :----------------------- | ------------: |
+| drop-in / feed (30 mins) |   £10 / visit |
+| drop-in / feed (1 hour)  |   £15 / visit |
+| sitting (2+ hours)       | £12.50 / hour |
+| additional pet           |    +50% / pet |
 
 ### Overnight services
 
-#### With dog
-
-| Service                     |       Price |
+| Service (with dog)          |       Price |
 | :-------------------------- | ----------: |
-| sitting (incl. 1 hour walk) | £30 / night |
-| additional dog              |  +£15 / dog |
+| sitting (incl. 1 hour walk) | £40 / night |
+| additional dog              |  +£20 / dog |
 | additional other pet        |  +£10 / pet |
 
-#### Without dog
-
-| Service        |       Price |
-| :------------- | ----------: |
-| sitting        | £20 / night |
-| additional pet |  +£10 / pet |
+| Service (without dog) |       Price |
+| :-------------------- | ----------: |
+| sitting               | £30 / night |
+| additional pet        |  +£10 / pet |
 
 For longer bookings, a deposit might be required.
 
