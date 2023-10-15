@@ -81,6 +81,10 @@ table {
   }
 }
 
+table + table {
+  margin-top: 1em;
+}
+
 picture img {
   height: 100%;
   width: 100%;
