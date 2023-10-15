@@ -61,11 +61,11 @@ During holiday periods, my rates increase by 50%, subject to availability.
 
 ## Location
 
-I currently operate in **Dewsbury, Wakefield, Barnsley, and the surrounding
-areas**.
+I currently operate **between Dewsbury and Wakefield, and cover some of the
+surrounding areas**.
 
 I may be able to offer services outside of these areas, so [please get in
-touch]({{< relref "/contact" >}} "Contact me") to check my availability!
+touch]({{< relref "/contact" >}} "Contact me") to see if I can help.
 
 ## Terms of service
 
