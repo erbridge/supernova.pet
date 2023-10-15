@@ -11,6 +11,6 @@ left_image:
 
 You can email me at hello@supernova.pet or fill in the contact form below.
 
-{{< contactform >}}
+{{< contactForm >}}
 
 {{< affiliates >}}
