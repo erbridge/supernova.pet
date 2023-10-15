@@ -54,6 +54,11 @@ together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
 
 For longer bookings, a deposit might be required.
 
+## Holiday periods
+
+During holiday periods, my rates increase by 50%, subject to availability.
+[Contact me]({{< relref "/contact" >}} "Contact me") for more details.
+
 ## Location
 
 I currently operate in **Dewsbury, Wakefield, Barnsley, and the surrounding
