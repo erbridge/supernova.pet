@@ -59,6 +59,17 @@ For longer bookings, a deposit might be required.
 During holiday periods, my rates increase by 50%, subject to availability.
 [Contact me]({{< relref "/contact" >}} "Contact me") for more details.
 
+## Availability
+
+You can see when I have overnight sittings booked for the next few months in the
+calendar below.
+
+{{< existingSittingCalendar >}}
+
+Note that this calendar only updates periodically and is included here as a
+guide only. For up-to-date availability, please [contact
+me]({{< relref "/contact" >}} "Contact me").
+
 ## Location
 
 I currently operate **between Dewsbury and Wakefield, and cover some of the

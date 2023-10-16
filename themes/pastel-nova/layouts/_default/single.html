@@ -110,6 +110,7 @@
     font-size: 0.85em;
     background-color: var(--accent-colour);
     text-align: center;
+    z-index: 1;
   }
 
   .default-single__floating-content--top {
@@ -139,7 +140,7 @@
     border-top-color: var(--accent-colour-dark);
   }
 
-  @media (min-width: 450px) {
+  @media (min-width: 650px) {
     .default-single {
       flex-direction: row;
       justify-content: {{ if and .Params.left_image .Params.right_image }}space-between{{ else if .Params.left_image }}flex-start{{ else if .Params.right_image }}flex-end{{ else }}center{{ end }};
