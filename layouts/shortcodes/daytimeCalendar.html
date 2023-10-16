@@ -1,0 +1,209 @@
+{{ $holidayDates := slice
+  (time "2023-12-23")
+  (time "2023-12-24")
+  (time "2023-12-25")
+  (time "2023-12-26")
+  (time "2023-12-27")
+  (time "2023-12-28")
+  (time "2023-12-29")
+  (time "2023-12-30")
+  (time "2023-12-31")
+  (time "2024-01-01")
+  (time "2024-01-02")
+}}
+
+{{ $busyDates := slice
+  (time "2023-12-25")
+  (time "2023-12-26")
+  (time "2024-01-01")
+}}
+
+<div>
+
+  <div class="daytime-calendar">
+    {{ $monthsToShow := 4 }}
+
+    {{ $day := printf "%s-01" (time.Now.Format "2006-01") | time }}
+    {{ $prevDay := $day.AddDate 0 0 -1 }}
+    {{ range $monthCounter := seq $monthsToShow }}
+      <div id="daytime-calendar-{{ $day.Format "2006-01" }}">
+        <time datetime="{{ $day.Format "2006-01" }}">
+          <div>
+            {{ if gt $monthCounter 1 }}
+              <a href="#daytime-calendar-{{ ((printf "%s-01" ($day.Format "2006-01") | time).AddDate 0 -1 0).Format "2006-01" }}">⬅&#xFE0E;</a>
+            {{ end }}
+            <span>{{ $day.Format "January 2006" }}</span>
+            {{ if lt $monthCounter $monthsToShow }}
+              <a href="#daytime-calendar-{{ ((printf "%s-01" ($day.Format "2006-01") | time).AddDate 0 1 0).Format "2006-01" }}">⮕&#xFE0E;</a>
+            {{ end }}
+          </div>
+
+          <div>
+            <span>Su</span>
+            <span>Mo</span>
+            <span>Tu</span>
+            <span>We</span>
+            <span>Th</span>
+            <span>Fr</span>
+            <span>Sa</span>
+          </div>
+
+          {{ range seq 6 }}
+            <div>
+              {{ range seq 7 }}
+                {{ $dayStatus := "none" }}
+                {{ if $day.Before (time.Now.AddDate 0 0 -1) }}
+                  {{ $dayStatus = "past" }}
+                {{ else if or (in $busyDates $day) (eq (int $day.Weekday) 6) (eq (int $day.Weekday) 0) }}
+                  {{ $dayStatus = "busy" }}
+                {{ end }}
+
+                <time
+                  datetime="{{ $day.Format "2006-01-02" }}"
+                  data-status="{{ $dayStatus }}"
+                  data-holiday="{{ in $holidayDates $day }}"
+                  >{{ $day.Day }}</time>
+
+                {{ $prevDay = $day }}
+                {{ $day = $day.AddDate 0 0 1 }}
+
+                {{ if ne $prevDay.Month $day.Month }}
+                  {{ break }}
+                {{ end }}
+
+                {{ if gt (int $prevDay.Weekday) (int $day.Weekday) }}
+                  {{ break }}
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{ if ne $prevDay.Month $day.Month }}
+              {{ break }}
+            {{ end }}
+          {{ end }}
+        </time>
+      </div>
+    {{ end }}
+  </div>
+
+  <legend>
+    <div>
+      <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> unavailable for daytime services
+    </div>
+    <div>
+      <time datetime="2023-12-25" data-holiday="true">25</time> holiday period
+    </div>
+  </legend>
+
+</div>
+
+<style>
+  .daytime-calendar {
+    margin-top: -3.5em;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    user-select: none;
+  }
+
+  .daytime-calendar > div {
+    margin-bottom: 1px;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .daytime-calendar > div > time > :first-child {
+    position: relative;
+    margin: 4em 0 1em;
+    font-weight: bold;
+  }
+
+  .daytime-calendar > div > time > :first-child > a {
+    position: absolute;
+    text-decoration: none;
+  }
+
+  .daytime-calendar > div > time > :first-child > a:first-child {
+    left: 0;
+    padding-right: 2em;
+  }
+
+  .daytime-calendar > div > time > :first-child > a:last-child {
+    right: 0;
+    padding-left: 2em;
+  }
+
+  .daytime-calendar > div > time > :not(:first-child) {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .daytime-calendar > div > time > :nth-child(2) > span {
+    font-style: italic;
+  }
+
+  .daytime-calendar > div > time > :nth-child(3) {
+    justify-content: flex-end;
+  }
+
+  .daytime-calendar > div > time > :nth-child(2) > span,
+  .daytime-calendar > div > time time,
+  .daytime-calendar ~ legend time {
+    position:relative;
+    width: 2.5em;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .daytime-calendar > div > time > :nth-child(2) > span {
+    margin: 1px;
+  }
+
+  .daytime-calendar > div > time time,
+  .daytime-calendar ~ legend time {
+    flex-shrink: 0;
+    margin: -1px;
+    border: 2px solid black;
+  }
+
+  .daytime-calendar > div > time time[data-status="past"] {
+    opacity: 0;
+  }
+
+  .daytime-calendar > div > time time[data-status="past"]::after {
+    content: "";
+    position: absolute;
+    border-top: 1px solid black;
+    width: 200%;
+    transform: rotate(45deg);
+  }
+
+  .daytime-calendar > div > time time[data-status="busy"],
+  .daytime-calendar ~ legend time[data-status="busy"] {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .daytime-calendar > div > time time:not([data-status="busy"])[data-holiday="true"],
+  .daytime-calendar ~ legend time:not([data-status="busy"])[data-holiday="true"] {
+    background-color: var(--accent-colour);
+  }
+
+  .daytime-calendar ~ legend {
+    margin-top: 1em;
+  }
+
+  .daytime-calendar ~ legend > div {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+  }
+</style>
