@@ -61,14 +61,20 @@ During holiday periods, my rates increase by 50%, subject to availability.
 
 ## Availability
 
-You can see when I have overnight sittings booked for the next few months in the
-calendar below.
+You can see when I'm unavailable for services in the next few months in the
+calendars below.
 
-{{< existingSittingCalendar >}}
-
-Note that this calendar only updates periodically and is included here as a
-guide only. For up-to-date availability, please [contact
+Note that these calendars only update periodically and are included here as
+guides only. For up-to-date availability, please [contact
 me]({{< relref "/contact" >}} "Contact me").
+
+### Daytime services
+
+{{< daytimeCalendar >}}
+
+### Overnight services
+
+{{< overnightCalendar >}}
 
 ## Location
 

@@ -76,21 +76,21 @@
 
 <div>
 
-  <div class="sitting-calendar">
+  <div class="overnight-calendar">
     {{ $monthsToShow := 4 }}
 
     {{ $day := printf "%s-01" (time.Now.Format "2006-01") | time }}
     {{ $prevDay := $day.AddDate 0 0 -1 }}
     {{ range $monthCounter := seq $monthsToShow }}
-      <div id="sitting-calendar-{{ $day.Format "2006-01" }}">
+      <div id="overnight-calendar-{{ $day.Format "2006-01" }}">
         <time datetime="{{ $day.Format "2006-01" }}">
           <div>
             {{ if gt $monthCounter 1 }}
-              <a href="#sitting-calendar-{{ ((printf "%s-01" ($day.Format "2006-01") | time).AddDate 0 -1 0).Format "2006-01" }}">⬅</a>
+              <a href="#overnight-calendar-{{ ((printf "%s-01" ($day.Format "2006-01") | time).AddDate 0 -1 0).Format "2006-01" }}">⬅&#xFE0E;</a>
             {{ end }}
             <span>{{ $day.Format "January 2006" }}</span>
             {{ if lt $monthCounter $monthsToShow }}
-              <a href="#sitting-calendar-{{ ((printf "%s-01" ($day.Format "2006-01") | time).AddDate 0 1 0).Format "2006-01" }}">⮕</a>
+              <a href="#overnight-calendar-{{ ((printf "%s-01" ($day.Format "2006-01") | time).AddDate 0 1 0).Format "2006-01" }}">⮕&#xFE0E;</a>
             {{ end }}
           </div>
 
@@ -148,7 +148,7 @@
 
   <legend>
     <div>
-      <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> confirmed unavailable for overnight sittings
+      <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> unavailable for overnight services
     </div>
     <div>
       <time datetime="2023-12-25" data-holiday="true">25</time> holiday period
@@ -158,8 +158,8 @@
 </div>
 
 <style>
-  .sitting-calendar {
-    margin-top: -4em;
+  .overnight-calendar {
+    margin-top: -3.5em;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
@@ -167,7 +167,7 @@
     user-select: none;
   }
 
-  .sitting-calendar > div {
+  .overnight-calendar > div {
     margin-bottom: 1px;
     flex-shrink: 0;
     flex-basis: 100%;
@@ -178,43 +178,43 @@
     text-align: center;
   }
 
-  .sitting-calendar > div > time > :first-child {
+  .overnight-calendar > div > time > :first-child {
     position: relative;
-    margin: 4.5em 0 1em;
+    margin: 4em 0 1em;
     font-weight: bold;
   }
 
-  .sitting-calendar > div > time > :first-child > a {
+  .overnight-calendar > div > time > :first-child > a {
     position: absolute;
     text-decoration: none;
   }
 
-  .sitting-calendar > div > time > :first-child > a:first-child {
+  .overnight-calendar > div > time > :first-child > a:first-child {
     left: 0;
     padding-right: 2em;
   }
 
-  .sitting-calendar > div > time > :first-child > a:last-child {
+  .overnight-calendar > div > time > :first-child > a:last-child {
     right: 0;
     padding-left: 2em;
   }
 
-  .sitting-calendar > div > time > :not(:first-child) {
+  .overnight-calendar > div > time > :not(:first-child) {
     display: flex;
     justify-content: flex-start;
   }
 
-  .sitting-calendar > div > time > :nth-child(2) > span {
+  .overnight-calendar > div > time > :nth-child(2) > span {
     font-style: italic;
   }
 
-  .sitting-calendar > div > time > :nth-child(3) {
+  .overnight-calendar > div > time > :nth-child(3) {
     justify-content: flex-end;
   }
 
-  .sitting-calendar > div > time > :nth-child(2) > span,
-  .sitting-calendar > div > time time,
-  .sitting-calendar ~ legend time {
+  .overnight-calendar > div > time > :nth-child(2) > span,
+  .overnight-calendar > div > time time,
+  .overnight-calendar ~ legend time {
     position:relative;
     width: 2.5em;
     height: 2.5em;
@@ -224,22 +224,22 @@
     overflow: hidden;
   }
 
-  .sitting-calendar > div > time > :nth-child(2) > span {
+  .overnight-calendar > div > time > :nth-child(2) > span {
     margin: 1px;
   }
 
-  .sitting-calendar > div > time time,
-  .sitting-calendar ~ legend time {
+  .overnight-calendar > div > time time,
+  .overnight-calendar ~ legend time {
     flex-shrink: 0;
     margin: -1px;
     border: 2px solid black;
   }
 
-  .sitting-calendar > div > time time[data-status="past"] {
+  .overnight-calendar > div > time time[data-status="past"] {
     opacity: 0;
   }
 
-  .sitting-calendar > div > time time[data-status="past"]::after {
+  .overnight-calendar > div > time time[data-status="past"]::after {
     content: "";
     position: absolute;
     border-top: 1px solid black;
@@ -247,20 +247,20 @@
     transform: rotate(45deg);
   }
 
-  .sitting-calendar > div > time time[data-status="busy"],
-  .sitting-calendar > div > time time[data-status="starting"]::after,
-  .sitting-calendar > div > time time[data-status="ending"]::after,
-  .sitting-calendar ~ legend time[data-status="busy"] {
+  .overnight-calendar > div > time time[data-status="busy"],
+  .overnight-calendar > div > time time[data-status="starting"]::after,
+  .overnight-calendar > div > time time[data-status="ending"]::after,
+  .overnight-calendar ~ legend time[data-status="busy"] {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  .sitting-calendar > div > time time[data-holiday="true"],
-  .sitting-calendar ~ legend time[data-holiday="true"] {
+  .overnight-calendar > div > time time:not([data-status="busy"])[data-holiday="true"],
+  .overnight-calendar ~ legend time:not([data-status="busy"])[data-holiday="true"] {
     background-color: var(--accent-colour);
   }
 
-  .sitting-calendar > div > time time[data-status="starting"]::after,
-  .sitting-calendar > div > time time[data-status="ending"]::after {
+  .overnight-calendar > div > time time[data-status="starting"]::after,
+  .overnight-calendar > div > time time[data-status="ending"]::after {
     content: "";
     position: absolute;
     width: 200%;
@@ -269,19 +269,19 @@
     transform-origin: top center;
   }
 
-  .sitting-calendar > div > time time[data-status="starting"]::after {
+  .overnight-calendar > div > time time[data-status="starting"]::after {
     transform: rotate(-45deg);
   }
 
-  .sitting-calendar > div > time time[data-status="ending"]::after {
+  .overnight-calendar > div > time time[data-status="ending"]::after {
     transform: rotate(135deg);
   }
 
-  .sitting-calendar ~ legend {
+  .overnight-calendar ~ legend {
     margin-top: 1em;
   }
 
-  .sitting-calendar ~ legend > div {
+  .overnight-calendar ~ legend > div {
     display: flex;
     gap: 0.5em;
     align-items: center;
