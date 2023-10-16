@@ -1,0 +1,9 @@
+on:
+  schedule:
+    - cron: 0 3 * * *
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
