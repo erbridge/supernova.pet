@@ -18,3 +18,7 @@ disableKinds = ['taxonomy', 'term']
     disable = true
   [privacy.youtube]
     disable = true
+
+[caches]
+  [caches.getjson]
+    maxAge = '1h'
