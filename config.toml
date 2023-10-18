@@ -21,4 +21,4 @@ disableKinds = ['taxonomy', 'term']
 
 [caches]
   [caches.getjson]
-    maxAge = '1h'
+    maxAge = '30m'
