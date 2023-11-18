@@ -9,8 +9,8 @@
 {{ $payingJobs := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtablePayingJobsTableId $airtableQuerystring $airtableHeaders }}
 
 {{/* These need updating along with the logic over time. */}}
-{{ $bstEnd := time "2023-10-29T01:00:00Z" }}
 {{ $bstStart := time "2024-03-31T01:00:00Z" }}
+{{ $bstEnd := time "2024-10-27T01:00:00Z" }}
 
 {{ $holidayDates := slice
   (time "2023-12-23")
@@ -38,7 +38,7 @@
 
   {{/* Treat as "busy" if starting before 12:00 in the local time. */}}
   {{ $busyBeforeHourAtStart := 12 }}
-  {{ if or ($startAt.Before $bstEnd) ($startAt.After $bstStart) }}
+  {{ if and ($startAt.After $bstStart) ($startAt.Before $bstEnd) }}
     {{ $busyBeforeHourAtStart = 11 }}
   {{ end }}
   {{ if and (lt $startAt.Hour $busyBeforeHourAtStart) (not (in $busyDates $startOn)) }}
@@ -53,7 +53,7 @@
 
   {{/* Treat as "busy" if ending on or after 17:00 in the local time. */}}
   {{ $busyOnOrAfterHourAtEnd := 17 }}
-  {{ if or ($endAt.Before $bstEnd) ($endAt.After $bstStart) }}
+  {{ if and ($endAt.After $bstStart) ($endAt.Before $bstEnd) }}
     {{ $busyOnOrAfterHourAtEnd = 16 }}
   {{ end }}
   {{ if and (ge $endAt.Hour $busyOnOrAfterHourAtEnd) (not (in $busyDates $endOn)) }}
