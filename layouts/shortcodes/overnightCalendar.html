@@ -3,7 +3,7 @@
 {{ $airtablePayingJobsTableId := getenv "HUGO_AIRTABLE_PAYING_JOBS_TABLE_ID" }}
 {{ $airtableUpcomingSittingsViewId := getenv "HUGO_AIRTABLE_UPCOMING_SITTINGS_VIEW_ID" }}
 
-{{ $airtableQuerystring := printf "?view=%s&fields%%5B%%5D=Start+at&fields%%5B%%5D=End+at" $airtableUpcomingSittingsViewId }}
+{{ $airtableQuerystring := printf "?view=%s&fields%%5B%%5D=Start+at&fields%%5B%%5D=End+at+(auto)" $airtableUpcomingSittingsViewId }}
 {{ $airtableHeaders := dict "Authorization" (printf "Bearer %s" $airtableAuthToken) }}
 
 {{ $payingJobs := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtablePayingJobsTableId $airtableQuerystring $airtableHeaders }}
@@ -45,7 +45,7 @@
     {{ $busyDates = $busyDates | append $startOn }}
   {{ end }}
 
-  {{ $endAt := index .fields "End at" | time }}
+  {{ $endAt := index .fields "End at (auto)" | time }}
   {{ $endOn := $endAt.Format "2006-01-02" | time }}
   {{ if not (in $endDates $endOn) }}
     {{ $endDates = $endDates | append $endOn }}
