@@ -1,35 +1,52 @@
 {{ $airtableAuthToken := getenv "HUGO_AIRTABLE_AUTH_TOKEN" }}
-{{ $airtableBaseId := getenv "HUGO_AIRTABLE_BASE_ID" }}
-{{ $airtablePayingJobsTableId := getenv "HUGO_AIRTABLE_PAYING_JOBS_TABLE_ID" }}
-{{ $airtableUpcomingSittingsViewId := getenv "HUGO_AIRTABLE_UPCOMING_SITTINGS_VIEW_ID" }}
-
-{{ $airtableQuerystring := printf "?view=%s&fields%%5B%%5D=Start+at&fields%%5B%%5D=End+at+(auto)" $airtableUpcomingSittingsViewId }}
 {{ $airtableHeaders := dict "Authorization" (printf "Bearer %s" $airtableAuthToken) }}
 
-{{ $payingJobs := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtablePayingJobsTableId $airtableQuerystring $airtableHeaders }}
+{{ $airtableBaseId := getenv "HUGO_AIRTABLE_BASE_ID" }}
+
+{{ $airtablePayingJobsTableId := getenv "HUGO_AIRTABLE_PAYING_JOBS_TABLE_ID" }}
+{{ $airtableUpcomingSittingsViewId := getenv "HUGO_AIRTABLE_UPCOMING_SITTINGS_VIEW_ID" }}
+{{ $airtableUpcomingSittingsQuerystring := printf "?view=%s&fields%%5B%%5D=Start+at&fields%%5B%%5D=End+at+(auto)" $airtableUpcomingSittingsViewId }}
+{{ $upcomingSittings := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtablePayingJobsTableId $airtableUpcomingSittingsQuerystring $airtableHeaders }}
+
+{{ $airtableSpecialDatesTableId := getenv "HUGO_AIRTABLE_SPECIAL_DATES_TABLE_ID" }}
+{{ $airtableUpcomingHolidayRatesViewId := getenv "HUGO_AIRTABLE_UPCOMING_OVERNIGHT_HOLIDAY_RATES_VIEW_ID" }}
+{{ $airtableUpcomingHolidayRatesQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingHolidayRatesViewId }}
+{{ $upcomingHolidayRates := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingHolidayRatesQuerystring $airtableHeaders }}
 
 {{/* These need updating along with the logic over time. */}}
 {{ $bstStart := time "2024-03-31T01:00:00Z" }}
 {{ $bstEnd := time "2024-10-27T01:00:00Z" }}
 
-{{ $holidayDates := slice
-  (time "2023-12-23")
-  (time "2023-12-24")
-  (time "2023-12-25")
-  (time "2023-12-26")
-  (time "2023-12-27")
-  (time "2023-12-28")
-  (time "2023-12-29")
-  (time "2023-12-30")
-  (time "2023-12-31")
-  (time "2024-01-01")
-  (time "2024-01-02")
-}}
+{{ $holidayDates := slice }}
+{{ range $upcomingHolidayRates.records }}
+  {{ $startOn := index .fields "Start on" | time }}
+  {{ if not (in $holidayDates $startOn) }}
+    {{ $holidayDates = $holidayDates | append $startOn }}
+  {{ end }}
+
+  {{ $endOn := index .fields "End on (inclusive)" | time }}
+  {{ if not (in $holidayDates $endOn) }}
+    {{ $holidayDates = $holidayDates | append $endOn }}
+  {{ end }}
+
+  {{ $d := $startOn.AddDate 0 0 1 }}
+  {{ range seq 1000 }}
+    {{ if $d.After ($endOn.AddDate 0 0 -1) }}
+      {{ break }}
+    {{ end }}
+
+    {{ if not (in $holidayDates $d) }}
+      {{ $holidayDates = $holidayDates | append $d }}
+    {{ end }}
+
+    {{ $d = $d.AddDate 0 0 1 }}
+  {{ end }}
+{{ end }}
 
 {{ $startDates := slice }}
 {{ $endDates := slice }}
 {{ $busyDates := slice }}
-{{ range $payingJobs.records }}
+{{ range $upcomingSittings.records }}
   {{ $startAt := index .fields "Start at" | time }}
   {{ $startOn := $startAt.Format "2006-01-02" | time }}
   {{ if not (in $startDates $startOn) }}
