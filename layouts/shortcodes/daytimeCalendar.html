@@ -8,6 +8,10 @@
 {{ $airtableUpcomingHolidayRatesQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingHolidayRatesViewId }}
 {{ $upcomingHolidayRates := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingHolidayRatesQuerystring $airtableHeaders }}
 
+{{ $airtableUpcomingUnavailabilityViewId := getenv "HUGO_AIRTABLE_UPCOMING_DAYTIME_UNAVAILABILITY_VIEW_ID" }}
+{{ $airtableUpcomingUnavailabilityQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingUnavailabilityViewId }}
+{{ $upcomingUnavailability := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingUnavailabilityQuerystring $airtableHeaders }}
+
 {{ $holidayDates := slice }}
 {{ range $upcomingHolidayRates.records }}
   {{ $startOn := index .fields "Start on" | time }}
@@ -34,11 +38,31 @@
   {{ end }}
 {{ end }}
 
-{{ $busyDates := slice
-  (time "2023-12-25")
-  (time "2023-12-26")
-  (time "2024-01-01")
-}}
+{{ $busyDates := slice }}
+{{ range $upcomingUnavailability.records }}
+  {{ $startOn := index .fields "Start on" | time }}
+  {{ if not (in $busyDates $startOn) }}
+    {{ $busyDates = $busyDates | append $startOn }}
+  {{ end }}
+
+  {{ $endOn := index .fields "End on (inclusive)" | time }}
+  {{ if not (in $busyDates $endOn) }}
+    {{ $busyDates = $busyDates | append $endOn }}
+  {{ end }}
+
+  {{ $d := $startOn.AddDate 0 0 1 }}
+  {{ range seq 1000 }}
+    {{ if $d.After ($endOn.AddDate 0 0 -1) }}
+      {{ break }}
+    {{ end }}
+
+    {{ if not (in $busyDates $d) }}
+      {{ $busyDates = $busyDates | append $d }}
+    {{ end }}
+
+    {{ $d = $d.AddDate 0 0 1 }}
+  {{ end }}
+{{ end }}
 
 <div>
 
