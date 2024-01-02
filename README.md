@@ -59,8 +59,8 @@ hugo server -D
 
 ### Make your changes
 
-Make whatever changes you need. You should see your changes at
-http://localhost:1313/.
+Make whatever changes you need in your editor (eg Visual Studio Code). You
+should see your changes at http://localhost:1313/.
 
 ### Commit and push your changes
 
@@ -73,15 +73,15 @@ On GitHub, create a pull request for your branch to `main`.
 
 ### Preview and review your changes
 
-After a few minutes, Render will comment on your pull request with instructions
-on how to view your changes in a production-like environment.
+After a few minutes, Render will comment on your pull request on GitHub with
+instructions on how to view your changes in a production-like environment.
 
 If you need to make changes, you can push them to same branch and Render will
 rebuild the page with the new changes.
 
 ### Merge the pull request
 
-If everything looks good in the preview, merge the pull request.
+If everything looks good in the preview, merge the pull request on GitHub.
 
 ### Check your changes
 
