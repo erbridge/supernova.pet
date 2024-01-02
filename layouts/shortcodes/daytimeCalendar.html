@@ -3,17 +3,21 @@
 
 {{ $airtableBaseId := getenv "HUGO_AIRTABLE_BASE_ID" }}
 
-{{ $airtableSpecialDatesTableId := getenv "HUGO_AIRTABLE_SPECIAL_DATES_TABLE_ID" }}
-{{ $airtableUpcomingHolidayRatesViewId := getenv "HUGO_AIRTABLE_UPCOMING_DAYTIME_HOLIDAY_RATES_VIEW_ID" }}
-{{ $airtableUpcomingHolidayRatesQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingHolidayRatesViewId }}
-{{ $upcomingHolidayRates := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingHolidayRatesQuerystring $airtableHeaders }}
+{{ $upcomingHolidayRates := slice }}
+{{ $upcomingUnavailability := slice }}
+{{ if $airtableBaseId }}
+  {{ $airtableSpecialDatesTableId := getenv "HUGO_AIRTABLE_SPECIAL_DATES_TABLE_ID" }}
+  {{ $airtableUpcomingHolidayRatesViewId := getenv "HUGO_AIRTABLE_UPCOMING_DAYTIME_HOLIDAY_RATES_VIEW_ID" }}
+  {{ $airtableUpcomingHolidayRatesQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingHolidayRatesViewId }}
+  {{ $upcomingHolidayRates = (getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingHolidayRatesQuerystring $airtableHeaders).records }}
 
-{{ $airtableUpcomingUnavailabilityViewId := getenv "HUGO_AIRTABLE_UPCOMING_DAYTIME_UNAVAILABILITY_VIEW_ID" }}
-{{ $airtableUpcomingUnavailabilityQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingUnavailabilityViewId }}
-{{ $upcomingUnavailability := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingUnavailabilityQuerystring $airtableHeaders }}
+  {{ $airtableUpcomingUnavailabilityViewId := getenv "HUGO_AIRTABLE_UPCOMING_DAYTIME_UNAVAILABILITY_VIEW_ID" }}
+  {{ $airtableUpcomingUnavailabilityQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingUnavailabilityViewId }}
+  {{ $upcomingUnavailability = (getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingUnavailabilityQuerystring $airtableHeaders).records }}
+{{ end }}
 
 {{ $holidayDates := slice }}
-{{ range $upcomingHolidayRates.records }}
+{{ range $upcomingHolidayRates }}
   {{ $startOn := index .fields "Start on" | time }}
   {{ if not (in $holidayDates $startOn) }}
     {{ $holidayDates = $holidayDates | append $startOn }}
@@ -39,7 +43,7 @@
 {{ end }}
 
 {{ $busyDates := slice }}
-{{ range $upcomingUnavailability.records }}
+{{ range $upcomingUnavailability }}
   {{ $startOn := index .fields "Start on" | time }}
   {{ if not (in $busyDates $startOn) }}
     {{ $busyDates = $busyDates | append $startOn }}

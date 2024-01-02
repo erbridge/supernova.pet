@@ -3,26 +3,31 @@
 
 {{ $airtableBaseId := getenv "HUGO_AIRTABLE_BASE_ID" }}
 
-{{ $airtablePayingJobsTableId := getenv "HUGO_AIRTABLE_PAYING_JOBS_TABLE_ID" }}
-{{ $airtableUpcomingSittingsViewId := getenv "HUGO_AIRTABLE_UPCOMING_SITTINGS_VIEW_ID" }}
-{{ $airtableUpcomingSittingsQuerystring := printf "?view=%s&fields%%5B%%5D=Start+at&fields%%5B%%5D=End+at+(auto)" $airtableUpcomingSittingsViewId }}
-{{ $upcomingSittings := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtablePayingJobsTableId $airtableUpcomingSittingsQuerystring $airtableHeaders }}
+{{ $upcomingSittings := slice }}
+{{ $upcomingHolidayRates := slice }}
+{{ $upcomingUnavailability := slice }}
+{{ if $airtableBaseId }}
+  {{ $airtablePayingJobsTableId := getenv "HUGO_AIRTABLE_PAYING_JOBS_TABLE_ID" }}
+  {{ $airtableUpcomingSittingsViewId := getenv "HUGO_AIRTABLE_UPCOMING_SITTINGS_VIEW_ID" }}
+  {{ $airtableUpcomingSittingsQuerystring := printf "?view=%s&fields%%5B%%5D=Start+at&fields%%5B%%5D=End+at+(auto)" $airtableUpcomingSittingsViewId }}
+  {{ $upcomingSittings = (getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtablePayingJobsTableId $airtableUpcomingSittingsQuerystring $airtableHeaders).records }}
 
-{{ $airtableSpecialDatesTableId := getenv "HUGO_AIRTABLE_SPECIAL_DATES_TABLE_ID" }}
-{{ $airtableUpcomingHolidayRatesViewId := getenv "HUGO_AIRTABLE_UPCOMING_OVERNIGHT_HOLIDAY_RATES_VIEW_ID" }}
-{{ $airtableUpcomingHolidayRatesQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingHolidayRatesViewId }}
-{{ $upcomingHolidayRates := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingHolidayRatesQuerystring $airtableHeaders }}
+  {{ $airtableSpecialDatesTableId := getenv "HUGO_AIRTABLE_SPECIAL_DATES_TABLE_ID" }}
+  {{ $airtableUpcomingHolidayRatesViewId := getenv "HUGO_AIRTABLE_UPCOMING_OVERNIGHT_HOLIDAY_RATES_VIEW_ID" }}
+  {{ $airtableUpcomingHolidayRatesQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingHolidayRatesViewId }}
+  {{ $upcomingHolidayRates = (getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingHolidayRatesQuerystring $airtableHeaders).records }}
 
-{{ $airtableUpcomingUnavailabilityViewId := getenv "HUGO_AIRTABLE_UPCOMING_OVERNIGHT_UNAVAILABILITY_VIEW_ID" }}
-{{ $airtableUpcomingUnavailabilityQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingUnavailabilityViewId }}
-{{ $upcomingUnavailability := getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingUnavailabilityQuerystring $airtableHeaders }}
+  {{ $airtableUpcomingUnavailabilityViewId := getenv "HUGO_AIRTABLE_UPCOMING_OVERNIGHT_UNAVAILABILITY_VIEW_ID" }}
+  {{ $airtableUpcomingUnavailabilityQuerystring := printf "?view=%s&fields%%5B%%5D=Start+on&fields%%5B%%5D=End+on+(inclusive)" $airtableUpcomingUnavailabilityViewId }}
+  {{ $upcomingUnavailability = (getJSON "https://api.airtable.com/v0/" $airtableBaseId "/" $airtableSpecialDatesTableId $airtableUpcomingUnavailabilityQuerystring $airtableHeaders).records }}
+{{ end }}
 
 {{/* These need updating along with the logic over time. */}}
 {{ $bstStart := time "2024-03-31T01:00:00Z" }}
 {{ $bstEnd := time "2024-10-27T01:00:00Z" }}
 
 {{ $holidayDates := slice }}
-{{ range $upcomingHolidayRates.records }}
+{{ range $upcomingHolidayRates }}
   {{ $startOn := index .fields "Start on" | time }}
   {{ if not (in $holidayDates $startOn) }}
     {{ $holidayDates = $holidayDates | append $startOn }}
@@ -48,7 +53,7 @@
 {{ end }}
 
 {{ $busyDates := slice }}
-{{ range $upcomingUnavailability.records }}
+{{ range $upcomingUnavailability }}
   {{ $startOn := index .fields "Start on" | time }}
   {{ if not (in $busyDates $startOn) }}
     {{ $busyDates = $busyDates | append $startOn }}
@@ -75,7 +80,7 @@
 
 {{ $startDates := slice }}
 {{ $endDates := slice }}
-{{ range $upcomingSittings.records }}
+{{ range $upcomingSittings }}
   {{ $startAt := index .fields "Start at" | time }}
   {{ $startOn := $startAt.Format "2006-01-02" | time }}
   {{ if not (in $startDates $startOn) }}
