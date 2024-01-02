@@ -40,19 +40,22 @@ In GitHub Desktop:
 
 ### Create a pull request
 
-On GitHub, create a pull request for your branch to `main`.
+In GitHub Desktop press "Preview pull request" and follow the steps until you
+have created a pull request on the GitHub website.
 
 ### Preview and review your changes
 
-After a few minutes, Render will comment on your pull request on GitHub with
-instructions on how to view your changes in a production-like environment.
+After a few minutes, Render will comment on your pull request on the GitHub
+website with instructions on how to preview your changes before making them
+live.
 
-If you need to make changes, you can push them to same branch and Render will
-rebuild the page with the new changes.
+If you need to make changes, you can commit to same branch, publish the new
+changes, and Render will rebuild the page.
 
 ### Merge the pull request
 
-If everything looks good in the preview, merge the pull request on GitHub.
+If everything looks good in the preview, merge the pull request on the GitHub
+website.
 
 ### Check your changes
 
