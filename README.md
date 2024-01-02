@@ -4,8 +4,13 @@
 
 ### Update your local repository
 
-Pull the latest changes to this repository from GitHub using your preferred
-method.
+Pull the latest changes to this repository from GitHub:
+
+1. Open GitHub Desktop
+2. Switch the active branch to `main`
+3. Click "Fetch origin" (this might not be necessary if "Pull origin" is already
+   showing)
+4. Click "Pull origin" if there are any updates
 
 ### Check you're still set up correctly
 
