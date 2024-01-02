@@ -12,11 +12,6 @@ Pull the latest changes to this repository from GitHub:
    showing)
 4. Click "Pull origin" if there are any updates
 
-### Check you're still set up correctly
-
-Review [the setting up instructions below](#setting-up-from-scratch) to see if
-you need to make any changes to your setup.
-
 ### Create a new branch
 
 Create a new branch in this repository for your changes.
