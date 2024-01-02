@@ -31,8 +31,12 @@ should see your changes at http://localhost:1313/.
 
 ### Commit and push your changes
 
-Stage your changes, commit them with a message that explains what you did, and
-push the branch to GitHub.
+In GitHub Desktop:
+
+1. Select the changes you want to keep
+2. Write a short message explaining what you did
+3. Press "commit"
+4. Publish the branch to GitHub
 
 ### Create a pull request
 
