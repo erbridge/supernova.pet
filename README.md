@@ -14,7 +14,7 @@ Pull the latest changes to this repository from GitHub:
 
 ### Create a new branch
 
-Create a new branch in this repository for your changes.
+In GitHub Desktop, create a new branch in this repository for your changes.
 
 ### Start Hugo
 
