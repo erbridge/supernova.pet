@@ -2,7 +2,7 @@
 
 ## Making changes
 
-### Update your local repository
+### 1. Update your local repository
 
 Pull the latest changes to this repository from GitHub:
 
@@ -12,11 +12,11 @@ Pull the latest changes to this repository from GitHub:
    showing)
 4. Click "Pull origin" if there are any updates
 
-### Create a new branch
+### 2. Create a new branch
 
 In GitHub Desktop, create a new branch in this repository for your changes.
 
-### Start Hugo
+### 3. Start Hugo
 
 Open a terminal to the root of this respository and run:
 
@@ -24,12 +24,12 @@ Open a terminal to the root of this respository and run:
 hugo server -D
 ```
 
-### Make your changes
+### 4. Make your changes
 
 Make whatever changes you need in your editor (eg Visual Studio Code). You
 should see your changes at http://localhost:1313/.
 
-### Commit and push your changes
+### 5. Commit and publish your changes
 
 In GitHub Desktop:
 
@@ -38,26 +38,26 @@ In GitHub Desktop:
 3. Press "commit"
 4. Publish the branch to GitHub
 
-### Create a pull request
+### 6. Create a pull request
 
 In GitHub Desktop press "Preview pull request" and follow the steps until you
 have created a pull request on the GitHub website.
 
-### Preview and review your changes
+### 7. Preview and review your changes
 
 After a few minutes, Render will comment on your pull request on the GitHub
 website with instructions on how to preview your changes before making them
 live.
 
-If you need to make changes, you can commit to same branch, publish the new
-changes, and Render will rebuild the page.
+If you need to make changes, repeat steps 4 and 5 and Render will rebuild the
+page.
 
-### Merge the pull request
+### 8. Merge the pull request
 
 If everything looks good in the preview, merge the pull request on the GitHub
 website.
 
-### Check your changes
+### 9. Check your changes
 
 After a few minutes, your changes should be merged and live.
 
