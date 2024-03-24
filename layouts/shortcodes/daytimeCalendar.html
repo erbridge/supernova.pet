@@ -42,16 +42,16 @@
   {{ end }}
 {{ end }}
 
-{{ $busyDates := slice }}
+{{ $unavailableDates := slice }}
 {{ range $upcomingUnavailability }}
   {{ $startOn := index .fields "Start on" | time }}
-  {{ if not (in $busyDates $startOn) }}
-    {{ $busyDates = $busyDates | append $startOn }}
+  {{ if not (in $unavailableDates $startOn) }}
+    {{ $unavailableDates = $unavailableDates | append $startOn }}
   {{ end }}
 
   {{ $endOn := index .fields "End on (inclusive)" | time }}
-  {{ if not (in $busyDates $endOn) }}
-    {{ $busyDates = $busyDates | append $endOn }}
+  {{ if not (in $unavailableDates $endOn) }}
+    {{ $unavailableDates = $unavailableDates | append $endOn }}
   {{ end }}
 
   {{ $d := $startOn.AddDate 0 0 1 }}
@@ -60,8 +60,8 @@
       {{ break }}
     {{ end }}
 
-    {{ if not (in $busyDates $d) }}
-      {{ $busyDates = $busyDates | append $d }}
+    {{ if not (in $unavailableDates $d) }}
+      {{ $unavailableDates = $unavailableDates | append $d }}
     {{ end }}
 
     {{ $d = $d.AddDate 0 0 1 }}
@@ -104,7 +104,7 @@
                 {{ $dayStatus := "none" }}
                 {{ if $day.Before (time.Now.AddDate 0 0 -1) }}
                   {{ $dayStatus = "past" }}
-                {{ else if or (in $busyDates $day) (eq (int $day.Weekday) 6) (eq (int $day.Weekday) 0) }}
+                {{ else if or (in $unavailableDates $day) (eq (int $day.Weekday) 6) (eq (int $day.Weekday) 0) }}
                   {{ $dayStatus = "busy" }}
                 {{ end }}
 

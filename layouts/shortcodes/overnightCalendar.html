@@ -52,16 +52,16 @@
   {{ end }}
 {{ end }}
 
-{{ $busyDates := slice }}
+{{ $unavailableDates := slice }}
 {{ range $upcomingUnavailability }}
   {{ $startOn := index .fields "Start on" | time }}
-  {{ if not (in $busyDates $startOn) }}
-    {{ $busyDates = $busyDates | append $startOn }}
+  {{ if not (in $unavailableDates $startOn) }}
+    {{ $unavailableDates = $unavailableDates | append $startOn }}
   {{ end }}
 
   {{ $endOn := index .fields "End on (inclusive)" | time }}
-  {{ if not (in $busyDates $endOn) }}
-    {{ $busyDates = $busyDates | append $endOn }}
+  {{ if not (in $unavailableDates $endOn) }}
+    {{ $unavailableDates = $unavailableDates | append $endOn }}
   {{ end }}
 
   {{ $d := $startOn.AddDate 0 0 1 }}
@@ -70,8 +70,8 @@
       {{ break }}
     {{ end }}
 
-    {{ if not (in $busyDates $d) }}
-      {{ $busyDates = $busyDates | append $d }}
+    {{ if not (in $unavailableDates $d) }}
+      {{ $unavailableDates = $unavailableDates | append $d }}
     {{ end }}
 
     {{ $d = $d.AddDate 0 0 1 }}
@@ -80,6 +80,7 @@
 
 {{ $startDates := slice }}
 {{ $endDates := slice }}
+{{ $busyDates := slice }}
 {{ range $upcomingSittings }}
   {{ $startAt := index .fields "Start at" | time }}
   {{ $startOn := $startAt.Format "2006-01-02" | time }}
@@ -161,7 +162,7 @@
                 {{ $dayStatus := "none" }}
                 {{ if $day.Before (time.Now.AddDate 0 0 -1) }}
                   {{ $dayStatus = "past" }}
-                {{ else if or (in $busyDates $day) (and (in $startDates $day) (in $endDates $day)) }}
+                {{ else if or (in $unavailableDates $day) (or (in $busyDates $day) (and (in $startDates $day) (in $endDates $day))) }}
                   {{ $dayStatus = "busy" }}
                 {{ else if in $startDates $day }}
                   {{ $dayStatus = "starting" }}
