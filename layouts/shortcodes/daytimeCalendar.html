@@ -141,7 +141,7 @@
       <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> unavailable for daytime services
     </div>
     <div>
-      <time datetime="2023-12-25" data-holiday="true">25</time> holiday period
+      <time datetime="2023-12-25" data-status="none" data-holiday="true">25</time> holiday period
     </div>
   </legend>
 
@@ -225,26 +225,18 @@
     border: 2px solid black;
   }
 
-  .daytime-calendar > div > time time[data-status="past"] {
-    opacity: 0;
+  .daytime-calendar > div > time time[data-status="none"][data-holiday="true"],
+  .daytime-calendar ~ legend time[data-status="none"][data-holiday="true"] {
+    background-color: var(--accent-colour);
   }
 
-  .daytime-calendar > div > time time[data-status="past"]::after {
-    content: "";
-    position: absolute;
-    border-top: 1px solid black;
-    width: 200%;
-    transform: rotate(45deg);
+  .daytime-calendar > div > time time[data-status="past"] {
+    opacity: 0;
   }
 
   .daytime-calendar > div > time time[data-status="busy"],
   .daytime-calendar ~ legend time[data-status="busy"] {
     background-color: rgba(0, 0, 0, 0.3);
-  }
-
-  .daytime-calendar > div > time time:not([data-status="busy"])[data-holiday="true"],
-  .daytime-calendar ~ legend time:not([data-status="busy"])[data-holiday="true"] {
-    background-color: var(--accent-colour);
   }
 
   .daytime-calendar ~ legend {

@@ -202,7 +202,7 @@
       <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> unavailable for overnight services
     </div>
     <div>
-      <time datetime="2023-12-25" data-holiday="true">25</time> holiday period
+      <time datetime="2023-12-25" data-status="none" data-holiday="true">25</time> holiday period
     </div>
   </legend>
 
@@ -286,46 +286,34 @@
     border: 2px solid black;
   }
 
+  .overnight-calendar > div > time time[data-status="none"][data-holiday="true"],
+  .overnight-calendar ~ legend time[data-status="none"][data-holiday="true"] {
+    background-color: var(--accent-colour);
+  }
+
   .overnight-calendar > div > time time[data-status="past"] {
     opacity: 0;
   }
 
-  .overnight-calendar > div > time time[data-status="past"]::after {
-    content: "";
-    position: absolute;
-    border-top: 1px solid black;
-    width: 200%;
-    transform: rotate(45deg);
-  }
-
   .overnight-calendar > div > time time[data-status="busy"],
-  .overnight-calendar > div > time time[data-status="starting"]::after,
-  .overnight-calendar > div > time time[data-status="ending"]::after,
   .overnight-calendar ~ legend time[data-status="busy"] {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
-  .overnight-calendar > div > time time:not([data-status="busy"])[data-holiday="true"],
-  .overnight-calendar ~ legend time:not([data-status="busy"])[data-holiday="true"] {
-    background-color: var(--accent-colour);
+  .overnight-calendar > div > time time[data-status="starting"]:not([data-holiday="true"]) {
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 50%, transparent 50%);
   }
 
-  .overnight-calendar > div > time time[data-status="starting"]::after,
-  .overnight-calendar > div > time time[data-status="ending"]::after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    top: 50%;
-    bottom: -50%;
-    transform-origin: top center;
+  .overnight-calendar > div > time time[data-status="starting"][data-holiday="true"] {
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.3) 50%, var(--accent-colour) 50%);
   }
 
-  .overnight-calendar > div > time time[data-status="starting"]::after {
-    transform: rotate(-45deg);
+  .overnight-calendar > div > time time[data-status="ending"]:not([data-holiday="true"]) {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 50%, transparent 50%);
   }
 
-  .overnight-calendar > div > time time[data-status="ending"]::after {
-    transform: rotate(135deg);
+  .overnight-calendar > div > time time[data-status="ending"][data-holiday="true"] {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 50%, var(--accent-colour) 50%);
   }
 
   .overnight-calendar ~ legend {
