@@ -78,8 +78,7 @@ me]({{< relref "/contact" >}} "Contact me").
 
 ## Location
 
-I currently operate **between Dewsbury and Wakefield, and cover some of the
-surrounding areas**.
+I currently operate **around Wakefield, Ossett, and Horbury**.
 
 I may be able to offer services outside of these areas, so [please get in
 touch]({{< relref "/contact" >}} "Contact me") to see if I can help.
