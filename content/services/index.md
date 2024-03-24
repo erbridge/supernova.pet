@@ -32,12 +32,12 @@ together.]({{< relref "/faqs#how-many-dogs-do-you-walk-at-a-time" >}}
 
 ### Daytime services
 
-| Service                  |         Price |
-| :----------------------- | ------------: |
-| drop-in / feed (30 mins) |   £10 / visit |
-| drop-in / feed (1 hour)  |   £15 / visit |
-| sitting (2+ hours)       | £12.50 / hour |
-| additional pet           |    +50% / pet |
+| Service                        |         Price |
+| :----------------------------- | ------------: |
+| drop-in / feed (up to 30 mins) |   £10 / visit |
+| drop-in / feed (1 hour)        |   £15 / visit |
+| sitting (2+ hours)             | £12.50 / hour |
+| additional pet                 |    +50% / pet |
 
 ### Overnight services
 
