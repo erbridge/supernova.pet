@@ -1,3 +1,6 @@
+{{ $highlightUnavailability := .Get "highlightUnavailability" }}
+{{ $hideHolidayRates := .Get "hideHolidayRates" }}
+
 {{ $airtableAuthToken := getenv "HUGO_AIRTABLE_AUTH_TOKEN" }}
 {{ $airtableHeaders := dict "Authorization" (printf "Bearer %s" $airtableAuthToken) }}
 
@@ -162,6 +165,8 @@
                 {{ $dayStatus := "none" }}
                 {{ if $day.Before (time.Now.AddDate 0 0 -1) }}
                   {{ $dayStatus = "past" }}
+                {{ else if and $highlightUnavailability (in $unavailableDates $day) }}
+                  {{ $dayStatus = "unavailable" }}
                 {{ else if or (in $unavailableDates $day) (or (in $busyDates $day) (and (in $startDates $day) (in $endDates $day))) }}
                   {{ $dayStatus = "busy" }}
                 {{ else if in $startDates $day }}
@@ -173,7 +178,9 @@
                 <time
                   datetime="{{ $day.Format "2006-01-02" }}"
                   data-status="{{ $dayStatus }}"
-                  data-holiday="{{ in $holidayDates $day }}"
+                  {{ if not $hideHolidayRates }}
+                    data-holiday="{{ in $holidayDates $day }}"
+                  {{ end }}
                   >{{ $day.Day }}</time>
 
                 {{ $prevDay = $day }}
@@ -199,12 +206,19 @@
   </div>
 
   <legend>
+    {{ if $highlightUnavailability }}
+      <div>
+        <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="unavailable">{{ time.Now.Day }}</time> unavailable for overnight services
+      </div>
+    {{ end }}
     <div>
-      <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> unavailable for overnight services
+      <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="busy">{{ time.Now.Day }}</time> {{ if $highlightUnavailability }}fully booked{{ else }}unavailable{{ end }} for overnight services
     </div>
-    <div>
-      <time datetime="2023-12-25" data-status="none" data-holiday="true">25</time> holiday period
-    </div>
+    {{ if not $hideHolidayRates }}
+      <div>
+        <time datetime="{{ time.Now.Format "2006-01-02" }}" data-status="none" data-holiday="true">{{ time.Now.Day }}</time> holiday period
+      </div>
+    {{ end }}
   </legend>
 
 </div>
@@ -294,6 +308,11 @@
 
   .overnight-calendar > div > time time[data-status="past"] {
     opacity: 0;
+  }
+
+  .overnight-calendar > div > time time[data-status="unavailable"],
+  .overnight-calendar ~ legend time[data-status="unavailable"] {
+    background: repeating-linear-gradient(45deg,transparent,transparent 15px,var(--accent-colour-dark) 15px,var(--accent-colour-dark) 30px);
   }
 
   .overnight-calendar > div > time time[data-status="busy"],
